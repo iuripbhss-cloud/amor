@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste de Redirecionamento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fff5f7 0%, #ffeef8 50%, #fff5f7 100%);
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      color: #8b0000;
+      padding: 20px;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 192, 203, 0.1) 0%, transparent 20%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 800px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 30px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
+      position: relative;
+      margin: 20px;
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: linear-gradient(45deg, #ff6b9d, #c2185b, #ff6b9d);
+      border-radius: 35px;
+      z-index: -1;
+      animation: borderGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes borderGlow {
+      0% {
+        opacity: 0.3;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0.6;
+        transform: scale(1.02);
+      }
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 4rem;
+      margin-bottom: 40px;
+      color: #c2185b;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      animation: fadeInDown 1s ease-out;
+      position: relative;
+    }
+
+    h1::after {
+      content: "💌";
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      font-size: 3rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .buttons-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+
+    .love-btn {
+      background: linear-gradient(45deg, #c2185b, #d81b60, #e91e63);
+      color: white;
+      border: none;
+      padding: 20px 40px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      animation: pulse 2s infinite, float 4s ease-in-out infinite;
+      box-shadow: 0 12px 30px rgba(194, 24, 91, 0.4);
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      min-width: 180px;
+    }
+
+    .love-btn:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(194, 24, 91, 0.6);
+      animation: none;
+    }
+
+    .love-btn:nth-child(1) {
+      background: linear-gradient(45deg, #c2185b, #d81b60);
+      animation-delay: 0s;
+    }
+
+    .love-btn:nth-child(2) {
+      background: linear-gradient(45deg, #d81b60, #e91e63);
+      animation-delay: 0.5s;
+    }
+
+    .love-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.5s;
+    }
+
+    .love-btn:hover::before {
+      left: 100%;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 12px 30px rgba(194, 24, 91, 0.4);
+      }
+      50% {
+        transform: scale(1.03);
+        box-shadow: 0 15px 35px rgba(194, 24, 91, 0.6);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .hearts-decoration {
+      display: flex;
+      justify-content: space-around;
+      margin: 30px 0;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .heart-icon {
+      font-size: 3rem;
+      animation: heartbeat 2s infinite;
+      filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+    }
+
+    .heart-icon:nth-child(1) { animation-delay: 0s; color: #c2185b; }
+    .heart-icon:nth-child(2) { animation-delay: 0.5s; color: #d81b60; }
+    .heart-icon:nth-child(3) { animation-delay: 1s; color: #e91e63; }
+    .heart-icon:nth-child(4) { animation-delay: 1.5s; color: #ff4081; }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .floating-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .floating-heart {
+      position: absolute;
+      font-size: 2rem;
+      color: rgba(194, 24, 91, 0.3);
+      animation: floatUp 8s linear infinite;
+      user-select: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #5a3e36;
+      margin-bottom: 30px;
+      font-weight: 300;
+      animation: fadeInUp 1s ease-out 0.5s both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 30px;
+      }
+      
+      h1::after {
+        font-size: 2.5rem;
+        top: -15px;
+        right: -15px;
+      }
+      
+      .container {
+        padding: 25px 20px;
+        margin: 15px;
+      }
+      
+      .buttons-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .love-btn {
+        width: 100%;
+        max-width: 250px;
+        padding: 18px 30px;
+        font-size: 1.2rem;
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 25px;
+      }
+      
+      h1::after {
+        font-size: 2rem;
+        top: -10px;
+        right: -10px;
+      }
+      
+      .container {
+        padding: 20px 15px;
+      }
+      
+      .love-btn {
+        padding: 15px 25px;
+        font-size: 1.1rem;
+        min-width: 160px;
+      }
+      
+      .heart-icon {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .love-btn {
+        min-width: 140px;
+        padding: 12px 20px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-hearts" id="floatingHearts"></div>
+  
+  <div class="container">
+    <h1>Quer namorar comigo? 💖</h1>
+    
+    <p class="subtitle">Cada dia ao seu lado é uma bênção que celebro intensamente</p>
+    
+    <div class="hearts-decoration">
+      <div class="heart-icon">❤️</div>
+      <div class="heart-icon">💕</div>
+      <div class="heart-icon">💖</div>
+      <div class="heart-icon">💘</div>
+    </div>
+
+    <div class="buttons-container">
+      <a href="namoro.html" class="love-btn">Sim, com todo meu coração</a>
+      <a href="namoro.html" class="love-btn">Claro que sim!</a>
+    </div>
+  </div>
+
+  <script>
+    // Criar corações flutuantes
+    function createFloatingHearts() {
+      const container = document.getElementById('floatingHearts');
+      const hearts = ['❤️', '💖', '💘', '💕', '💞'];
+      
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDelay = Math.random() * 8 + 's';
+        heart.style.animationDuration = (Math.random() * 5 + 8) + 's';
+        heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+        heart.style.opacity = Math.random() * 0.5 + 0.3;
+        container.appendChild(heart);
+      }
+    }
+
+    // Adicionar efeitos hover aos botões
+    document.addEventListener('DOMContentLoaded', function() {
+      const buttons = document.querySelectorAll('.love-btn');
+      
+      buttons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+          this.style.animation = 'none';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+          this.style.animation = 'pulse 2s infinite';
+        });
+      });
+    });
+
+    // Inicializar quando a página carregar
+    window.addEventListener('load', createFloatingHearts);
+  </script>
+
+</body>
+</html>

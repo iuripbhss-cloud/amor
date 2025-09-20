@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Meu Amor 🤍</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fff5f7 0%, #ffeef8 50%, #fff5f7 100%);
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      color: #8b0000;
+      padding: 20px;
+      margin: 0;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 192, 203, 0.1) 0%, transparent 20%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      color: #c2185b;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      animation: fadeIn 2s ease-in-out;
+      position: relative;
+    }
+
+    h1::after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #c2185b, transparent);
+      margin: 15px auto;
+      border-radius: 50%;
+    }
+
+    h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      margin: 40px 0 20px;
+      color: #d81b60;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      line-height: 1.8;
+      animation: fadeIn 3s ease-in-out;
+      color: #5a3e36;
+    }
+
+    .btn-love {
+      background: linear-gradient(45deg, #c2185b, #d81b60, #e91e63);
+      color: white;
+      border: none;
+      padding: 15px 35px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite, float 3s ease-in-out infinite;
+      box-shadow: 0 8px 25px rgba(194, 24, 91, 0.3);
+      margin: 20px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-love:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 12px 35px rgba(194, 24, 91, 0.5);
+    }
+
+    .btn-love::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-love:hover::before {
+      left: 100%;
+    }
+
+    @keyframes fadeIn {
+      from { 
+        opacity: 0; 
+        transform: translateY(-20px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 8px 25px rgba(194, 24, 91, 0.3);
+      }
+      50% { 
+        transform: scale(1.02);
+        box-shadow: 0 12px 30px rgba(194, 24, 91, 0.5);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+      aspect-ratio: 1;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 45px rgba(194, 24, 91, 0.2);
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(194, 24, 91, 0.1), rgba(216, 27, 96, 0.1));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover::before {
+      opacity: 1;
+    }
+
+    .hearts-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 40px auto;
+      flex-wrap: wrap;
+      max-width: 600px;
+    }
+
+    .heart {
+      font-size: 3.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+      animation: heartbeat 2s infinite;
+    }
+
+    .heart:nth-child(1) { animation-delay: 0s; }
+    .heart:nth-child(2) { animation-delay: 0.5s; }
+    .heart:nth-child(3) { animation-delay: 1s; }
+    .heart:nth-child(4) { animation-delay: 1.5s; }
+
+    .heart:hover {
+      transform: scale(1.3) rotate(10deg);
+      filter: drop-shadow(0 10px 25px rgba(194, 24, 91, 0.4));
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .message-card {
+      position: relative;
+      max-width: 550px;
+      margin: 30px auto 50px;
+      padding: 30px 50px 30px 30px;
+      background: linear-gradient(135deg, #fff 0%, #fff8f9 100%);
+      border-left: 8px solid #c2185b;
+      border-radius: 20px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #5a3e36;
+      animation: fadeInMessage 0.6s ease-in-out;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
+    }
+
+    .message-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" x="50" font-size="80" fill="%23c2185b20" opacity="0.1">❤️</text></svg>');
+      opacity: 0.1;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      color: #c2185b;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      font-weight: bold;
+    }
+
+    .close-btn:hover {
+      transform: rotate(90deg) scale(1.2);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes fadeInMessage {
+      from { 
+        opacity: 0; 
+        transform: translateY(20px) scale(0.95); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+      }
+    }
+
+    .video-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 30px 0;
+    }
+
+    #meuVideo {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      border: 3px solid rgba(194, 24, 91, 0.2);
+    }
+
+    .floating-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .floating-heart {
+      position: absolute;
+      font-size: 2rem;
+      color: rgba(194, 24, 91, 0.3);
+      animation: floatUp 6s linear infinite;
+      user-select: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .signature {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: #c2185b;
+      margin: 30px 0;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      h2 {
+        font-size: 2rem;
+      }
+      
+      p {
+        font-size: 1rem;
+        padding: 0 15px;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+      
+      .hearts-container {
+        gap: 20px;
+      }
+      
+      .heart {
+        font-size: 2.8rem;
+      }
+      
+      .message-card {
+        margin: 20px 15px;
+        padding: 25px 40px 25px 25px;
+        font-size: 1.1rem;
+      }
+      
+      #meuVideo {
+        width: 95%;
+        max-width: 350px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      
+      .hearts-container {
+        gap: 15px;
+      }
+      
+      .heart {
+        font-size: 2.5rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="floating-hearts" id="floatingHearts"></div>
+  
+  <div class="container">
+    <h1>Para Você, Meu Amor 🤍</h1>
+
+    <p>
+      Desde que você entrou na minha vida, tudo ganhou cor, sentido e um novo jeito de sorrir. <br>
+      Cada momento com você é único, e meu coração só quer continuar ao seu lado para viver tudo isso intensamente. <br>
+      Essa é só uma pequena forma de te mostrar o quanto você é especial pra mim.
+    </p>
+
+    <!-- Botão para tocar/pausar a música -->
+    <button onclick="toggleMusic()" id="music-btn" class="btn-love">
+      Tocar nossa música 🎶
+    </button>
+    <audio id="bg-music" src="Tribalistas - Velha Infância.mp3" loop></audio>
+
+    <h2>Clique nos corações para ver o que eu sinto por você 🤍</h2>
+
+    <div class="hearts-container">
+      <div class="heart" onclick="showMessage(0)">🤍</div>
+      <div class="heart" onclick="showMessage(1)">🤍</div>
+      <div class="heart" onclick="showMessage(2)">🤍</div>
+      <div class="heart" onclick="showMessage(3)">🤍</div>
+    </div>
+
+    <!-- Card da mensagem -->
+    <div id="message-card" class="message-card hidden">
+      <span class="close-btn" onclick="hideMessage()">×</span>
+      <p id="hidden-message"></p>
+    </div>
+
+    <h2>Nossos Momentos 💑</h2>
+
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="WhatsApp Image 2025-07-22 at 14.41.05 (3).jpeg" alt="Foto 1">
+      </div>
+      <div class="gallery-item">
+        <img src="WhatsApp Image 2025-07-22 at 14.41.04 (1).jpeg" alt="Foto 2">
+      </div>
+      <div class="gallery-item">
+        <img src="WhatsApp Image 2025-07-22 at 14.41.05.jpeg" alt="Foto 3">
+      </div>
+      <div class="gallery-item">
+        <img src="WhatsApp Image 2025-07-22 at 14.41.05 (1).jpeg" alt="Foto 4">
+      </div>
+      <div class="gallery-item">
+        <img src="WhatsApp Image 2025-07-22 at 14.41.04.jpeg" alt="Foto 5">
+      </div>
+      <div class="gallery-item">
+        <img src="WhatsApp Image 2025-07-22 at 14.41.05 (2).jpeg" alt="Foto 6">
+      </div>
+    </div>
+
+    <h2>Um Vídeo Especial 🎥</h2>
+
+    <div class="video-container">
+      <video id="meuVideo" controls>
+        <source src="WhatsApp Video 2025-08-04 at 22.47.47.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="signature">Com todo meu amor,<br>Seu Namorado</div>
+
+    <a href="pergunta.html" class="btn-love" style="display: inline-block; text-decoration: none; margin-bottom: 30px;">Eu te amo 🤍</a>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    let isPlaying = false;
+
+    function toggleMusic() {
+      const audio = document.getElementById('bg-music');
+      const button = document.getElementById('music-btn');
+
+      if (isPlaying) {
+        audio.pause();
+        button.textContent = "Tocar nossa música 🎶";
+      } else {
+        audio.play();
+        button.textContent = "Pausar música ⏸️";
+      }
+
+      isPlaying = !isPlaying;
+    }
+
+    const messages = [
+      "Foi como mágica: você apareceu, e tudo ao meu redor mudou. Meu peito ficou leve, minha alma sorriu… e eu soube que algo especial estava começando.",
+      "Cada segundo ao seu lado é pouco. Quero sua voz, seu abraço, sua risada. Quero você em todos os meus dias, porque é perto de você que tudo faz sentido.",
+      "O que eu sinto por você é mais do que amor. É cuidado, admiração, respeito e vontade de construir uma história linda, passo a passo, de mãos dadas com você.",
+      "A certeza que carrego no peito é simples e forte: você é o amor da minha vida. E eu não quero mais ninguém. É com você que eu quero ficar — hoje, amanhã e sempre. EU QUERO VOCÊ",
+    ];
+
+    function showMessage(index) {
+      const messageElement = document.getElementById("hidden-message");
+      const card = document.getElementById("message-card");
+
+      messageElement.innerText = messages[index];
+      card.classList.remove("hidden");
+    }
+
+    function hideMessage() {
+      const card = document.getElementById("message-card");
+      card.classList.add("hidden");
+    }
+
+    // Criar corações flutuantes
+    function createFloatingHearts() {
+      const container = document.getElementById('floatingHearts');
+      const hearts = ['❤️', '💖', '💘', '💕', '💞'];
+      
+      for (let i = 0; i < 15; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDelay = Math.random() * 6 + 's';
+        heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+        heart.style.opacity = Math.random() * 0.5 + 0.3;
+        container.appendChild(heart);
+      }
+    }
+
+    // Inicializar quando a página carregar
+    window.addEventListener('load', createFloatingHearts);
+  </script>
+
+</body>
+</html>
